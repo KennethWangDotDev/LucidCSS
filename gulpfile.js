@@ -63,7 +63,8 @@ gulp.task('uncss', function () {
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(uncss({
-            html: ['dist/**/*.html']
+            html: ['dist/**/*.html'],
+            ignore: [/js-/]
      }))
     .pipe(postcss([
       lost(),
@@ -87,7 +88,7 @@ gulp.task('js',function(){
 gulp.task('html', function() {
    gulp.src(['app/**/*.html', 'app/**/*.nunjucks'])
     .pipe(nunjucksRender({
-      path: ['app/templates']
+      path: ['app/chapters']
     }))
     .pipe(htmlmin({
       removeComments: true,
@@ -133,15 +134,19 @@ gulp.task('browser-sync', function() {
 
 gulp.task('watch', function() {
     gulp.watch("app/assets/scss/**/*.scss", ['css']).on('change', function(evt) {
-    	browserSync.reload();
+      browserSync.reload();
     });
 
     gulp.watch("app/assets/js/**/*.js", ['js']).on('change', function(evt) {
-    	browserSync.reload();
+      browserSync.reload();
     });
 
     gulp.watch("app/**/*.+(html|nunjucks)", ['html']).on('change', function(evt) {
-    	browserSync.reload();
+      browserSync.reload();
+    });
+
+    gulp.watch("app/**/*.+(png|jpg|jpeg|gif)", ['images']).on('change', function(evt) {
+      browserSync.reload();
     });
 });
 
