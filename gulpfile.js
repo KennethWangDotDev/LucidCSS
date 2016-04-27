@@ -88,7 +88,7 @@ gulp.task('js',function(){
 gulp.task('html', function() {
    gulp.src(['app/**/*.html', 'app/**/*.nunjucks'])
     .pipe(nunjucksRender({
-      path: ['app/chapters']
+      path: ['app/templates']
     }))
     .pipe(htmlmin({
       removeComments: true,
