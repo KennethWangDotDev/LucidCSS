@@ -3,17 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
     <!--[if lt IE 9]>
       <script src="assets/js/polyfill/html5-shiv.js"></script>
     <![endif]-->
   </head>
   <body>
 
-  {% include "partials/navigation.nunjucks" %}
-  {% block content %} {% endblock %}
+  {{> navigation }}
+  {{{contents}}}
+  {{> footer }}
 
     <!--[if lt IE 9]>
       <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -22,6 +25,6 @@
     <!--[if gt IE 8]><!-->
       <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!--<![endif]-->
-    <script src="assets/js/merged.js"></script>
+    <script src="/assets/js/merged.js"></script>
   </body>
 </html>

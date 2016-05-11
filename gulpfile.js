@@ -99,18 +99,18 @@ gulp.task('js',function(){
 });
 
 gulp.task('html', function() {
-   gulp.src(['app/html/*.html'])
+   gulp.src(['app/pages/**/*.html', 'app/*.html'])
    .pipe(gulp_front_matter()).on("data", function(file) {
       assign(file, file.frontMatter); 
       delete file.frontMatter;
     })
     .pipe(
       gulpsmith() 
-      .metadata({site_name: "Krav Maga Experts"})
+      .metadata({site_name: "site_name"})
       .use(layout({
         engine: "handlebars",
-        directory: "app/html/layouts",
-        partials: "app/html/partials"
+        directory: "app/templates/layouts",
+        partials: "app/templates/partials"
       }))
       .use(permalinks({
         pattern: ':root/:title'
@@ -130,9 +130,39 @@ gulp.task('html', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('html-home', function() {
-  gulp.src("dist/home/index.html")
-  .pipe(gulp.dest("dist"));
+gulp.task('markdown', function() {
+   gulp.src(['app/pages/**/*.md', 'app/*.md', '!app/templates', '!app/templates/**/*'])
+   .pipe(gulp_front_matter()).on("data", function(file) {
+      assign(file, file.frontMatter); 
+      delete file.frontMatter;
+    })
+    .pipe(
+      gulpsmith() 
+      .metadata({site_name: "SiteName"})
+      .use(markdown({
+        html: true
+      }))
+      .use(layout({
+        engine: "handlebars",
+        directory: "app/templates/layouts",
+        partials: "app/templates/partials"
+      }))
+      .use(permalinks({
+        pattern: ':root/:title'
+      }))
+    )
+    .pipe(htmlmin({
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeRedundantAttributes: true,
+      removeEmptyAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true
+    }))
+    .pipe(header(bannerHTML, { package : package }))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('imagemin', function() {
@@ -150,7 +180,7 @@ gulp.task('clean', function() {
 
 
 gulp.task('copy', function() {
-   gulp.src(['app/*.*', 'app/.htaccess'])
+   gulp.src(['app/*.*', 'app/.htaccess', '!app/*.md', '!app/*.html'])
     .pipe(gulp.dest('dist'));
   gulp.src(['app/assets/fonts/**'])
     .pipe(gulp.dest('dist/assets/fonts'));
@@ -176,8 +206,12 @@ gulp.task('watch', function() {
     	browserSync.reload();
     });
 
-    gulp.watch("app/**/*.+(html)", ['html, html-home']).on('change', function(evt) {
+    gulp.watch("app/**/*.+(html)", ['html']).on('change', function(evt) {
     	browserSync.reload();
+    });
+
+    gulp.watch("app/**/*.+(md)", ['markdown']).on('change', function(evt) {
+      browserSync.reload();
     });
 
     gulp.watch("app/assets/images/**/*.+(png|jpg|jpeg|gif)", ['images']).on('change', function(evt) {
@@ -186,17 +220,16 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function (callback) {
-  runSequence('clean', 'copy', 'html',
-    ['imagemin', 'css', 'js'],
-    'html-home', ['browser-sync', 'watch'],
+  runSequence('clean', 'copy', 'html', 'markdown',
+    ['imagemin', 'css', 'js'], 
+    ['browser-sync', 'watch'],
     callback
   )
 });
 
 gulp.task('build', function (callback) {
-  runSequence('clean', 'copy', 'html',
+  runSequence('clean', 'copy', 'html', 'markdown',
     ['imagemin', 'css-build', 'js'],
-    'html-home',
     callback
   )
 });

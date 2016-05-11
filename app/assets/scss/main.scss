@@ -1,25 +1,16 @@
 @charset 'UTF-8';
 
-// Vendor
-@import
-  'vendor/reeeset';
-
 // Base
 @import
-  'base/helpers',
+  'base/reeeset',
   'base/color',
-  'base/typography',
-  'base/base';
+  'base/typography';
 
-// Components
-@import
-  'components/button';
+// Modules
+@import 'modules/**/*.scss';
 
 // Layout
-@import
-  'layout/footer',
-  'layout/navbar';
+@import 'layout/**/*.scss';
 
 // Pages
-@import
-  'pages/home';
+@import 'pages/**/*.scss';

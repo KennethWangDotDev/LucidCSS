@@ -3,7 +3,8 @@
 // -----------------------------------------------------------------------------
 
 $line-height: 1.4;
-$whitespace: .5 * $line-height;
+$heading-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
+$body-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
 
 html {
   font-size: 100%;
@@ -11,27 +12,148 @@ html {
 
 body {
   line-height: $line-height;
+  font-family: $body-font;
+  color: $body-color;
 }
 
-//Modular scale
-//http://type-scale.com/?size=16&scale=1.333&text=A%20Visual%20Type%20Scale&webfont=Libre+Baskerville&font-family=%27Libre%20Baskerville%27,%20serif&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=%23333
+/* 
+ * Modular scale
+ * http://www.modularscale.com/?1.25&em&1.33&web&text
+*/
 
-h1 {font-size: 3.157em;}
-h2 {font-size: 2.369em;}
-h3 {font-size: 1.777em;}
-h4 {font-size: 1.333em;}
-p {font-size: 1em;}
-small {font-size: .75em;}
+$type-scale: (
+  hero: 6rem, // deviates from modular scale
+  sub-hero: 5.202rem,
+  h1: 3.911rem,
+  h2: 2.941rem,
+  h3: 2.211rem,
+  h4: 1.663rem,
+  p: 1.25rem,
+  small: 1rem // deviates from modular scale
+);
+
+/* 
+ * Modular scale
+ * http://www.modularscale.com/?1.25&em&1.25&web&text
+*/
+
+$type-scale-tablet: (
+  hero: 4.768rem,
+  sub-hero: 3.815rem,
+  h1: 3.052rem,
+  h2: 2.441rem,
+  h3: 1.953em,
+  h4: 1.563rem,
+  p: 1.25rem, 
+  small: 1rem
+);
+
+
+/* 
+ * Modular scale
+ * http://www.modularscale.com/?1.1&em&1.25&web&text
+*/
+
+$type-scale-mobile: (
+  hero: 4.196rem,
+  sub-hero: 3.357rem,
+  h1: 2.686rem,
+  h2: 2.148rem,
+  h3: 1.719rem,
+  h4: 1.375rem,
+  p: 1.1rem,
+  small: 0.94rem // deviates from modular scale
+);
+
+
+$breakpoint-tablet: 75em;
+$breakpoint-mobile: 45em;
+
+@mixin size($level) {
+  font-size: map-get($type-scale, $level);
+  @media (max-width: $breakpoint-tablet) {
+     font-size: map-get($type-scale-tablet, $level);
+  }
+  @media (max-width: $breakpoint-mobile) {
+     font-size: map-get($type-scale-mobile, $level);
+  }
+}
+
+$whitespace: $line-height * map-get($type-scale, p);
+
+@mixin margin-bottom($level) {
+  margin-bottom: $line-height * map-get($type-scale, p) * $level;
+  @media (max-width: $breakpoint-tablet) {
+     margin-bottom: $line-height * map-get($type-scale-tablet, p) * $level;
+  }
+  @media (max-width: $breakpoint-mobile) {
+     margin-bottom: $line-height * map-get($type-scale-mobile, p) * $level;
+  }
+}
+
+@mixin margin-top($level) {
+  margin-top: $line-height * map-get($type-scale, p) * $level;
+  @media (max-width: $breakpoint-tablet) {
+     margin-top: $line-height * map-get($type-scale-tablet, p) * $level;
+  }
+  @media (max-width: $breakpoint-mobile) {
+     margin-top: $line-height * map-get($type-scale-mobile, p) * $level;
+  }
+}
+
+h1 {@include size(h1);}
+h2 {@include size(h2);}
+h3 {@include size(h3);}
+h4 {@include size(h4);}
+p {@include size(p);}
+li {@include size(p);}
+small {@include size(small);}
+
+h1 {font-family: $heading-font}
 
 h1,
-h2 {
-  margin-bottom: $whitespace * 2;
-}
-
+h2,
 h3,
 h4,
-h5,
 p,
+ul,
+ol,
 small {
-  margin-bottom: $whitespace;
+  @include margin-bottom(1);
+}
+
+ol,
+ul {
+  padding-left: 1.4rem;
+}
+
+blockquote {
+  @include margin-bottom(1);
+  @include size(p);
+  padding: 1rem 0 1rem 1.6rem;
+  border-left: 0.5rem solid color($theme-color);
+  margin-top: $whitespace;
+}
+
+cite {
+  &:before {
+    content: '\2014 ';
+  }
+  color: color($grey, 400);
+  display: block;
+}
+
+
+@mixin container($width: 48rem) {
+  margin: auto;
+  @include margin-top(1);
+  @include margin-bottom(1);
+  max-width: $width;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+a {
+  color: color($theme-color);
+  /* Additional Styling in modules/_smart-underline.scss */
 }

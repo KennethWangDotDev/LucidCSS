@@ -1,8 +1,14 @@
-section {
+.home__container {
+  @include container;
+  
+  .title {
+    @include margin-bottom(0.25);
+    text-align: center;
+  }
 
-}
-
-div {
-  lost-column: 1/2;
-  height: 100px;
+  .author {
+    @include size(h4);
+    text-align: center;
+    font-style: italic;
+  }
 }

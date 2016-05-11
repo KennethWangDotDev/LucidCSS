@@ -1,0 +1,11 @@
+.global__footer {
+  @include margin-top(3);
+  background-color: color($theme-color, 900);
+  height: 5rem;
+  position: relative;
+  
+    p {
+      @include center;
+      color: white;
+    }
+}

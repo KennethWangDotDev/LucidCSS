@@ -22,6 +22,7 @@
     "gulp-sass-glob": "^1.0.6",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
+    "gulp-wait": "0.0.2",
     "gulpsmith": "^0.5.5",
     "handlebars": "^4.0.5",
     "imagemin-jpegoptim": "^4.1.0",

@@ -2,6 +2,7 @@
   @return map-get($color, $value);
 }
 
+/* Google Material Design Colors */
 $red: (
   50:   #ffebee,
   100:  #ffcdd2,
@@ -313,11 +314,6 @@ $blue-grey: (
   900:  #263238
 );
 
-$theme-color: $green;
-$secondary-color: $deep-orange;
-
-@each $value, $color in $grey{
-  .greyscale--#{$value} {
-    color: $color;
-  }
-}
+$theme-color: $blue;
+$secondary-color: $red;
+$body-color: rgb(51, 51, 51);

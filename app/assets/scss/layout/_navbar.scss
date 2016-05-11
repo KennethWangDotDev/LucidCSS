@@ -1,0 +1,11 @@
+.global__nav {
+  @include margin-bottom(2);
+  background-color: color($theme-color, 700);
+  height: 5rem;
+  position: relative;
+  
+    p {
+      @include center;
+      color: white;
+    }
+}
