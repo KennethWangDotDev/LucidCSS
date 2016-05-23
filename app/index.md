@@ -1,201 +1,405 @@
 ---
 layout: default.html
-title: Home
-permalink: false
+title: LucidCSS
 ---
 
-<div class="home__container">
+<section class="home__header">
+  <h1 class="title">Lucid<span class="light">CSS</span></h1>
+  <h2 class="desc">The Style Guide On Keeping Things Simple</h2>
+</section>
 
-<h1 class="title">A Hanging</h1>
-<h2 class="author">George Orwell</h2>
 
-It was in Burma, a sodden morning of the rains. A sickly light, like 
-yellow tinfoil, was slanting over the high walls into the jail yard. We 
-were waiting outside the condemned cells, a row of sheds fronted with 
-double bars, like small animal cages. Each cell measured about ten feet 
-by ten and was quite bare within except for a plank bed and a pot of 
-drinking water. In some of them brown silent men were squatting at the 
-inner bars, with their blankets draped round them. These were the 
-condemned men, due to be hanged within the next week or two. 
+<section class="home__book">
 
-One prisoner had been brought out of his cell. He was a Hindu, a puny 
-wisp of a man, with a shaven head and vague liquid eyes. He had a thick, 
-sprouting moustache, absurdly too big for his body, rather like the 
-moustache of a comic man on the films. Six tall Indian warders were 
-guarding him and getting him ready for the gallows. Two of them stood by 
-with rifles and fixed bayonets, while the others handcuffed him, passed a 
-chain through his handcuffs and fixed it to their belts, and lashed his 
-arms tight to his sides. They crowded very close about him, with their 
-hands always on him in a careful, caressing grip, as though all the while 
-feeling him to make sure he was there. It was like men handling a fish 
-which is still alive and may jump back into the water. But he stood quite 
-unresisting, yielding his arms limply to the ropes, as though he hardly 
-noticed what was happening. 
+#### LucidCSS is a style guide that I developed that completely revolutionizes the way CSS is organized and structured. The core foundation of LucidCSS is that CSS should be *extremely simple*. When things are simple, they are also maintainable. Instead of focusing on DRY concepts and perfect byte optimizations, LucidCSS focuses on simplicity.
 
-Eight o'clock struck and a bugle call, desolately thin in the wet air, 
-floated from the distant barracks. The superintendent of the jail, who 
-was standing apart from the rest of us, moodily prodding the gravel with 
-his stick, raised his head at the sound. He was an army doctor, with a 
-grey toothbrush moustache and a gruff voice. "For God's sake hurry up, 
-Francis," he said irritably. "The man ought to have been dead by this 
-time. Aren't you ready yet?" 
+<iframe class="github" src="http://hubstar.io/github/spin/kennethwang14/LucidCSS?name=%20"></iframe>
 
-Francis, the head jailer, a fat Dravidian in a white drill suit and gold 
-spectacles, waved his black hand. "Yes sir, yes sir," he bubbled. "All 
-iss satisfactorily prepared. The hangman iss waiting. We shall proceed." 
+## Complete Separation of Concerns
 
-"Well, quick march, then. The prisoners can't get their breakfast till 
-this job's over." 
+Before I explain the style guide rules, it's important to understand the reasonings behind them. LucidCSS believes that **style and architecture should be completely separated**. Here is an example of non-separated, unmaintainable HTML/CSS:
 
-We set out for the gallows. Two warders marched on either side of the 
-prisoner, with their rifles at the slope; two others marched close 
-against him, gripping him by arm and shoulder, as though at once pushing 
-and supporting him. The rest of us, magistrates and the like, followed 
-behind. Suddenly, when we had gone ten yards, the procession stopped 
-short without any order or warning. A dreadful thing had happened--a 
-dog, come goodness knows whence, had appeared in the yard. It came 
-bounding among us with a loud volley of barks, and leapt round us wagging 
-its whole body, wild with glee at finding so many human beings together. 
-It was a large woolly dog, half Airedale, half pariah. For a moment it 
-pranced round us, and then, before anyone could stop it, it had made a 
-dash for the prisoner, and jumping up tried to lick his face. Everyone 
-stood aghast, too taken aback even to grab at the dog. 
+```html
+<div class="col-xs-3 col-md-1 col-lg-1 blk m-10 social-btn-container">
+    <a href="#" class="btn btn-social btn-block btn-google">Google</a>
+    <a href="#" class="btn btn-social btn-block btn-twitter">Twitter</a>
+ </div>
+ ```
 
-"Who let that bloody brute in here?" said the superintendent angrily. 
-"Catch it, someone!" 
+*What class is doing what? What do I do if I wanted to change the appearance of one of the buttons? What part do I edit? Do I edit the styles for one of the classes, and if so, which one? What if I just wanted to add a slight margin to the first button; do I need to add a new class for that?*
 
-A warder, detached from the escort, charged clumsily after the dog, but 
-it danced and gambolled just out of his reach, taking everything as part 
-of the game. A young Eurasian jailer picked up a handful of gravel and 
-tried to stone the dog away, but it dodged the stones and came after us 
-again. Its yaps echoed from the jail wails. The prisoner, in the grasp of 
-the two warders, looked on incuriously, as though this was another 
-formality of the hanging. It was several minutes before someone managed 
-to catch the dog. Then we put my handkerchief through its collar and 
-moved off once more, with the dog still straining and whimpering. 
+The problem is that the HTML and CSS are entangled together. Before you can make any changes, you are required to first look through the HTML to find the list of classes, and then you must understand each class. Then when you make the change, you're most likely editing HTML as well as CSS. HTML is being heavily involved in the aspect of styling.
 
-It was about forty yards to the gallows. I watched the bare brown back of 
-the prisoner marching in front of me. He walked clumsily with his bound 
-arms, but quite steadily, with that bobbing gait of the Indian who never 
-straightens his knees. At each step his muscles slid neatly into place, 
-the lock of hair on his scalp danced up and down, his feet printed 
-themselves on the wet gravel. And once, in spite of the men who gripped 
-him by each shoulder, he stepped slightly aside to avoid a puddle on the 
-path. 
 
-It is curious, but till that moment I had never realized what it means to 
-destroy a healthy, conscious man. When I saw the prisoner step aside to 
-avoid the puddle, I saw the mystery, the unspeakable wrongness, of 
-cutting a life short when it is in full tide. This man was not dying, he 
-was alive just as we were alive. All the organs of his body were working 
---bowels digesting food, skin renewing itself, nails growing, tissues 
-forming--all toiling away in solemn foolery. His nails would still be 
-growing when he stood on the drop, when he was falling through the air 
-with a tenth of a second to live. His eyes saw the yellow gravel and the 
-grey walls, and his brain still remembered, foresaw, reasoned--reasoned 
-even about puddles. He and we were a party of men walking together, 
-seeing, hearing, feeling, understanding the same world; and in two 
-minutes, with a sudden snap, one of us would be gone--one mind less, one 
-world less. 
+This is a pretty extreme example. However, I still see modern style guides recommend "adding an utility class in HTML". No, that is the wrong approach. HTML is purely for architecture, and CSS is purely for design. If you want to edit the appearance of something, you should know exactly where you need to edit it. An utility class completely breaks this by adding HTML to the table. This brings me to the first rule...
 
-The gallows stood in a small yard, separate from the main grounds of the 
-prison, and overgrown with tall prickly weeds. It was a brick erection 
-like three sides of a shed, with planking on top, and above that two 
-beams and a crossbar with the rope dangling. The hangman, a grey-haired 
-convict in the white uniform of the prison, was waiting beside his 
-machine. He greeted us with a servile crouch as we entered. At a word 
-from Francis the two warders, gripping the prisoner more closely than 
-ever, half led, half pushed him to the gallows and helped him clumsily up 
-the ladder. Then the hangman climbed up and fixed the rope round the 
-prisoner's neck. 
+## Rule #1: A Single Class Per Element
 
-We stood waiting, five yards away. The warders had formed in a rough 
-circle round the gallows. And then, when the noose was fixed, the 
-prisoner began crying out on his god. It was a high, reiterated cry of 
-"Ram! Ram! Ram! Ram!", not urgent and fearful like a prayer or a cry for 
-help, but steady, rhythmical, almost like the tolling of a bell. The dog 
-answered the sound with a whine. The hangman, still standing on the 
-gallows, produced a small cotton bag like a flour bag and drew it down 
-over the prisoner's face. But the sound, muffled by the cloth, still 
-persisted, over and over again: "Ram! Ram! Ram! Ram! Ram!" 
+This is the most important rule; the foundation which LucidCSS is built upon. Let me repeat it for emphasis, there should only be a *single class* per element. That is how you separate concerns. There are two other problems with the above HTML example that I didn't mention before. The first is that because the classes are meant for extreme re-use, it limits your flexibility. You have to work within the limitations and framework of the utility classes. The second problem is that time is wasted when you have to search between different files for the locations of every single listed class. This rule solves both of those problem.
 
-The hangman climbed down and stood ready, holding the lever. Minutes 
-seemed to pass. The steady, muffled crying from the prisoner went on and 
-on, "Ram! Ram! Ram!" never faltering for an instant. The superintendent, 
-his head on his chest, was slowly poking the ground with his stick; 
-perhaps he was counting the cries, allowing the prisoner a fixed number-- 
-fifty, perhaps, or a hundred. Everyone had changed colour. The Indians 
-had gone grey like bad coffee, and one or two of the bayonets were 
-wavering. We looked at the lashed, hooded man on the drop, and listened 
-to his cries--each cry another second of life; the same thought was in 
-all our minds: oh, kill him quickly, get it over, stop that abominable 
-noise! 
+This rule does change a few things though. For starters, **CSS classes are no longer modular nor re-usable**. This help avoids CSS anti-patterns like `class="btn btn-social btn-block btn-google`. Hold on, don't panic yet. Modularity still exists...
 
-Suddenly the superintendent made up his mind. Throwing up his head he 
-made a swift motion with his stick. "Chalo!" he shouted almost fiercely. 
+## Rule #2: Modularity Through Mixins
 
-There was a clanking noise, and then dead silence. The prisoner had 
-vanished, and the rope was twisting on itself. I let go of the dog, and 
-it galloped immediately to the back of the gallows; but when it got there 
-it stopped short, barked, and then retreated into a corner of the yard, 
-where it stood among the weeds, looking timorously out at us. We went 
-round the gallows to inspect the prisoner's body. He was dangling with 
-his toes pointed straight downwards, very slowly revolving, as dead as a 
-stone. 
+Instead of the HTML `class=` attribute being a container for modular, re-usable CSS classes, your singular CSS class is the container for modular, re-usable mixins. Remember the messy HTML example above? Let me share the LucidCSS version of it:
 
-The superintendent reached out with his stick and poked the bare body; it 
-oscillated, slightly. "HE'S all right," said the superintendent. He 
-backed out from under the gallows, and blew out a deep breath. The moody 
-look had gone out of his face quite suddenly. He glanced at his 
-wrist-watch. "Eight minutes past eight. Well, that's all for this 
-morning, thank God." 
+```html
+<div class="home__social-buttons">
+    <a href="#" class="button--google">Google</a>
+    <a href="#" class="button--twitter">Twitter</a>
+ </div>
+```
+```scss
+.home__social-buttons {
+    @include container($default-padding);
+    @include grid(1, 3);
 
-The warders unfixed bayonets and marched away. The dog, sobered and 
-conscious of having misbehaved itself, slipped after them. We walked out 
-of the gallows yard, past the condemned cells with their waiting 
-prisoners, into the big central yard of the prison. The convicts, under 
-the command of warders armed with lathis, were already receiving their 
-breakfast. They squatted in long rows, each man holding a tin pannikin, 
-while two warders with buckets marched round ladling out rice; it seemed 
-quite a homely, jolly scene, after the hanging. An enormous relief had 
-come upon us now that the job was done. One felt an impulse to sing, to 
-break into a run, to snigger. All at once everyone began chattering 
-gaily. 
 
-The Eurasian boy walking beside me nodded towards the way we had come, 
-with a knowing smile: "Do you know, sir, our friend (he meant the dead 
-man), when he heard his appeal had been dismissed, he pissed on the floor 
-of his cell. From fright.--Kindly take one of my cigarettes, sir. Do you 
-not admire my new silver case, sir? From the boxwallah, two rupees eight 
-annas. Classy European style." 
+    .button--google {
+        @include social-button($color--google);
+    }
 
-Several people laughed--at what, nobody seemed certain. 
+    .button--twitter {
+        @include social-button($color--twitter);
+    }
+}
+```
 
-Francis was walking by the superintendent, talking garrulously. "Well, 
-sir, all hass passed off with the utmost satisfactoriness. It wass all 
-finished--flick! like that. It iss not always so--oah, no! I have known 
-cases where the doctor wass obliged to go beneath the gallows and pull 
-the prisoner's legs to ensure decease. Most disagreeable!" 
+Look how much cleaner this is to both read and write! Here is one of the questions I gave earlier for the example: **What if I just wanted to add a slight margin to the first button?** If you weren't using LucidCSS, you would either need to add inline CSS using `style=`, add a new utility class for margin, or create a variant for one of the buttons that has more margin. In LucidCSS, it is this simple:
 
-"Wriggling about, eh? That's bad," said the superintendent. 
+```
+.button--google {
+    @include social-button($color--twitter);
+    margin-bottom: 2rem;
+}
+```
 
-"Ach, sir, it iss worse when they become refractory! One man, I recall, 
-clung to the bars of hiss cage when we went to take him out. You will 
-scarcely credit, sir, that it took six warders to dislodge him, three 
-pulling at each leg. We reasoned with him. "My dear fellow," we said, 
-"think of all the pain and trouble you are causing to us!" But no, he 
-would not listen! Ach, he wass very troublesome!" 
+One of the biggest advantages of modular mixins over classes is that they can accept arguments. When you create a new mixin, abstract the CSS rules that you believe will change often. Use default values too so you don't need to rewrite it every time when calling the mixin.
 
-I found that I was laughing quite loudly. Everyone was laughing. Even the 
-superintendent grinned in a tolerant way. "You'd better all come out and 
-have a drink," he said quite genially. "I've got a bottle of whisky in 
-the car. We could do with it." 
+```scss
+@mixin button($color: color(theme),
+              $margin-bottom: $default-margin} {
+    padding: 2rem 4rem;
+    background-color: $color;
+    border-color: mix($color, black, 10%);
+    margin-bottom: $margin-bottom;
+    display: inline-block;
+}
+```
 
-We went through the big double gates of the prison, into the road. 
-"Pulling at his legs!" exclaimed a Burmese magistrate suddenly, and burst 
-into a loud chuckling. We all began laughing again. At that moment 
-Francis's anecdote seemed extraordinarily funny. We all had a drink 
-together, native and European alike, quite amicably. The dead man was a 
-hundred yards away.
+Be careful not to create too many parameters for a mixin though. Remember, the goal is simplicity, and having a parameter for every single CSS rule is confusing. Sometimes, it is better to create a *mixin variant* instead of adding more parameters.
 
-</div>
+```scss
+@mixin button--small($color: color(theme),
+                    $margin-bottom: $default-margin) {
+    @include button($color, $margin-bottom);
+    padding: 1rem 2rem; // half of regular button              
+}
+```
+
+Mixins also allow for inheritance as you can see in the example above. Due to the way specificity works, only the latest instance of a rule declaration takes effect.
+
+## Rule #3: Namespace
+
+>In many programming languages, namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace. They're also extremely useful for helping organize blocks of functionality in your application into easily manageable groups that can be uniquely identified.
+><cite><a href="https://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani</a></cite>
+
+I'm going to divide HTML elements into "outer" and "inner" elements. Outer elements are `div` or `section` that are direct children of the body. Inner elements are the elements contained by outer elements.
+
+Outer elements are namespaced with the format of `page__container-name`. Sometimes, there are global modules that are not page-specific. In that case, name them like `global__container-name`. The `container-name` portion should concisely describe the content inside of the container. Every outer container class should be **completely unique, and not to be re-used**. Inner element classes can be re-used, but you still need to follow the rule of having a singular class per element.
+
+Here is some code example:
+
+```html
+<nav class="global__nav">
+ <!-- code for navigation bar -->
+</nav>
+
+
+
+<section class="about__introduction">
+    <h1 class="title">Who I Am</h1>
+    <p class="body">Award winning web developer from Bellevue, Washington</p>
+</section>
+
+<section class="about__featured-on">
+    <h1 class="title">Featured On:</h1>
+    <div class="thumbnail-section">
+        <img class="thumbnail" src="google.png">
+        <img class="thumbnail" src="twitter.png">
+    </div>
+</section class="about__featured-on">
+
+
+
+<footer class="global__footer">
+ <!-- code for footer -->
+</footer>
+```
+```scss
+.about__introduction {
+  @include container;
+  
+    .title {
+      @include size(h2);
+      text-align: center;
+    }
+  
+    .body {
+      @include size(p);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+}
+
+
+.about__featured-on {
+  @include container($color--grey);
+  
+    .title {
+      @include size(h3);
+      color: $color--theme;
+      letter-spacing: 0.04rem;
+    }
+  
+    .thumbnail-section {
+      width: 100%;
+      padding: $default-padding;
+    }
+  
+        .thumbnail {
+          border: 1px solid $color--grey;
+          width: 6em;
+          height: 6em;
+          display: inline-block;
+          margin-right: 2em;
+        }
+}
+```
+
+One thing that you will immediately notice is that nesting is used. You've probably heard so many times how you should never nest in Sass and that it can create a specificity nightmare. In LucidCSS, nesting is cleverly used to *avoid* specificity issues. In fact, you hardly need to worry about specificity at all because every single line of code you write in a namespace is quarantined to that namespace.
+
+This also lets you simplify class names for inner elements. `about__introduction` and `about__featured-on` both contain a class called `title`, but the two are styled completely different and are not related at all. They are simply called `title` because "title" is the simplest name I thought of, and it clearly describes the content in relationship to the section.
+
+## Making Use Of Variables
+
+Variables are a powerful feature that is often ignored, or not used to its full potential. You should not have any magic numbers in your code. Wikipedia defines magic numbers as:
+
+>Unique values with unexplained meaning or multiple occurrences which could (preferably) be replaced with named constants
+><cite>Wikipedia</cite>
+
+Variables add context to your code -- and that makes things simpler. If you are constantly using 2rem for button padding, you should make a `button-padding` variable for it. Imagine if your client suddenly tells you to increase the button padding, you can then easily do it by simply changing the value of the variable, instead of searching for every instance.
+
+## Recommended Coding Convention
+
+1. The order of your CSS classes should reflect the layout appearance of the HTML webpage. Things at the top of the HTML webpage should be listed first in CSS. Follow the order of top to bottom,  left to right if there are multiple grid elements in a row.
+2. Use line breaks aggressively to organize.
+3. Using indents, your CSS classes should reflect the parent-child relationships of the HTML DOM. In the previous example, notice how `thumbnail-section` is clearly the parent of `thumbnail` just by looking at in the stylesheet.
+4. Only nest a single layer generally. Notice how `thumbnail-section` is not nested within `thumbnail`.
+5. To override a declaration in a mixin, the declaration has to be below the mixin. For this reason, mixins should generally be placed at the top of every class.
+
+## Regarding Templates
+
+Earlier, I said that every page should have its own unique outer container. Yes, doing so would give the most flexibility -- for example, if you only wanted X page to have a slightly bigger padding.
+
+However, sometimes, this approach may be counter-intuitive. Imagine a scenario where a static site generator creates a page for every state in the US. Instead of having an unique namespace for every page (`alabama__infobox`, `alaska__infobox`, `arizona__infobox` ...), it is better to simply use a *template namespace*: `states-page__infobox`.
+
+In a template namespace, there is less flexibility as it is harder to only style the page for Alabama when every state page share the same template. However, it's still possible by using an *external class*.
+
+```html
+<section class="states-page__infobox alabama__infobox">
+  <h1 class="title">Alabama</h1>
+  <p class="desc">Lorem ipsum dolor sit amet</p>
+</section>
+```
+```scss
+.states-page__infobox {
+  @include container;
+
+      .title {
+        @include margin-bottom(2);
+      }
+      .desc {
+        font-weight: 100;
+      }
+
+
+
+  /* External Class */
+  &.alabama__infobox {
+      .title {
+        @include margin-bottom(3);
+      }
+  }
+}
+```
+
+## Regarding Global Rules
+
+I refer to non-namespaced CSS rules as *global* rules. I recommend **not** having any global rules for HTML tags (`h1`, `div`, `a`, etc). Global rules for HTML tags makes things harder to maintain, because it adds an extra place where styling is defined.
+
+However, it is fine to have global rules using class names because it's clear when you use them. The usual case for this is for styling partials that contain a variety of HTML elements inside. Instead of using an `@include` for every single HTML element in the partial, it's simpler to use global rules.
+
+```scss
+/* this is unintuitive */
+
+.home__nav {
+  @include nav--container;
+  ul {
+    display: block;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    @include nav--link;
+  }
+  .divider {
+    border-right: 1px solid grey;
+  }
+}
+
+.about__nav {
+  @include nav--container;
+  ul {
+    display: block;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    @include nav--link;
+  }
+  .divider {
+    border-right: 1px solid grey;
+  }
+}
+
+.contact__nav {
+  @include nav--container;
+  ul {
+    display: block;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    @include nav--link;
+  }
+  .divider {
+    border-right: 1px solid grey;
+  }
+}
+```
+
+```scss
+/* much simpler */
+
+.global__nav {
+  @include nav--container;
+  ul {
+    display: block;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    @include nav--link;
+  }
+  .divider {
+    border-right: 1px solid grey;
+  }
+}
+```
+
+## Suggested Naming Convention
+
+Syntactically, my suggested naming convention looks like BEM, but it is not BEM.
+
+* For the class name of outer elements, use `template/page__container-name`. Example: `.about__featured-on`.
+* For the class name of inner elements, use the simplest and most concise name. Example: `.title`.
+* For mixins, use `module--variant` The variant is optional. Example: `button` and `button--small`.
+
+## Suggested File Structure
+
+I use a simplified version of the [Hugo Giraudel's 7-1 architecture pattern](https://github.com/HugoGiraudel/sass-boilerplate).
+
+```
+│───scss
+│   ├───base
+│   ├───layout
+│   ├───modules
+│   └───pages
+```
+```scss
+@charset 'UTF-8';
+
+// Base
+@import
+  'base/reeeset',
+  'base/color',
+  'base/typography';
+
+// Modules
+@import 'modules/helpers/*.scss';
+@import 'modules/**/*.scss';
+
+// Partials
+@import 'partials/**/*.scss';
+
+// Pages
+@import 'pages/**/*.scss';
+```
+
+The files in my `base` folder lay the foundation for everything else. They include the most important rule declarations, functions, and mixins that other modules may rely on. The order of import for files in the `base` folder often matter.
+
+Next, the files in my `module` folder are my *modular* mixins. I also have a folder in it called `helpers` for utility mixins such as `center`, `hover`, and `clearfix`.
+
+The files in my `partials` folder contain global rules for partials such as `.global__nav`, `.global__footer`, and `.global__featured-button`.
+
+Lastly, I import namespaced, page-specific (or template-specific) rules in the `pages` folder. 
+
+
+## Mixins Carry Over And Encapsulate
+
+Because simply declaring a mixin does not add any file size to the outputted CSS, there isn't any reason to delete a mixin once you have created it. This also means that once you have created a mixin, it can be used for *every single future project!* Simply copy and paste your mixins folder each time you start a new project. This allows for very rapid development.
+
+Mixins also encapsulate information. After I created a mixin for [Nicole Sullivan's media object](http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/), I no longer needed to remember how the media object worked, *ever again for all my future projects*. All I need to remember is where to use the mixin.
+
+```
+ @mixin media-wrapper {
+   overflow:hidden;
+   _overflow:visible;
+   zoom:1;
+ }
+
+ @mixin media-image($margin: 1rem) {
+   float:left;
+   margin-right: $margin;
+   img {
+     display: block;
+   }
+ }
+
+ @mixin media-body {
+   overflow:hidden;
+   _overflow:visible;
+   zoom:1;
+ }
+```
+
+## Regarding File Size
+
+LucidCSS heavily uses mixins, so the CSS output will have a large amount of repetitions. Luckily, Gzip compression does incredibly well compressing files with lots of repetitions. Read this [experiment by Harry Roberts](http://csswizardry.com/2016/02/mixins-better-for-performance/) comparing `@extend` (less repetitions, more unique classes) and `@mixins`.
+
+>The absolute numbers seem trivial (a mere 6K), but in relative terms, we can achieve a 27% saving over the wire simply by opting to use mixins to repeat declarations over and over, as opposed to using @extend to repeat a handful of selectors.<br><br>My tests showed pretty conclusively that mixins end up being better for network performance than using @extend. The way gzip works means that we get better savings even when our uncompresssed files are substantially larger.
+><cite>Harry Roberts</cite>
+
+## Closing Words
+
+LucidCSS is a flexible and adaptable style guide -- there are only three rules to follow. However, you should think of them more as *guidelines*, and I encourage you to experiment with them. The web industry is constantly changing, and what experts declare as "the right way" often turn out to be non-optimal after time passes. As long as you follow the core principles of LucidCSS, your style guide or framework can be considered a *lucid* one.
+
+<iframe class="github" src="http://hubstar.io/github/spin/kennethwang14/LucidCSS?name=%20"></iframe>
+
+
+</section>

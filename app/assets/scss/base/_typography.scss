@@ -2,74 +2,162 @@
 // This file contains everything related to typography.
 // -----------------------------------------------------------------------------
 
-$line-height: 1.4;
-$heading-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
-$body-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-It.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-It.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-It.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-It.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-It.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FF Meta';
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Book.eot');
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Book.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Book.woff2') format('woff2'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Book.woff') format('woff'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FF Meta';
+  src: url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.eot');
+  src: url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.woff2') format('woff2'),
+    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.woff') format('woff'),
+    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FF Meta';
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Bold.eot');
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Bold.woff2') format('woff2'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Bold.woff') format('woff'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+$line-height: 1.5;
+
+
+@mixin serious-font {
+    font-family: "FF Meta", Georgia, "Times New Roman", Times, serif;
+}
+@mixin body-font {
+    font-family: "Helvetica Neue", "proxima-nova", Helvetica, arial, sans-serif;
+}
+
 
 html {
   font-size: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   line-height: $line-height;
-  font-family: $body-font;
   color: $body-color;
+  @include body-font;
 }
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.25&em&1.33&web&text
+ * http://www.modularscale.com/?1.35&em&1.25&web&text
 */
 
 $type-scale: (
   hero: 6rem, // deviates from modular scale
-  sub-hero: 5.202rem,
-  h1: 3.911rem,
-  h2: 2.941rem,
-  h3: 2.211rem,
-  h4: 1.663rem,
-  p: 1.25rem,
-  small: 1rem // deviates from modular scale
+  sub-hero: 4.12rem,
+  h1: 3.296em,
+  h2: 2.636rem,
+  h3: 2.109rem,
+  h4: 1.688rem,
+  p: 1.35rem,
+  small: 1.1rem // deviates from modular scale
 );
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.25&em&1.25&web&text
+ * http://www.modularscale.com/?1.2&em&1.25&web&text
 */
 
 $type-scale-tablet: (
-  hero: 4.768rem,
-  sub-hero: 3.815rem,
-  h1: 3.052rem,
-  h2: 2.441rem,
-  h3: 1.953em,
-  h4: 1.563rem,
-  p: 1.25rem, 
-  small: 1rem
+  hero: 5.25rem, // deviates from modular scale
+  sub-hero: 3.662rem,
+  h1: 2.93rem,
+  h2: 2.344rem,
+  h3: 1.875em,
+  h4: 1.5rem,
+  p: 1.2rem,
+  small: 1.1rem // deviates from modular scale
 );
 
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.1&em&1.25&web&text
+ * http://www.modularscale.com/?1.15&em&1.2&web&text
 */
 
 $type-scale-mobile: (
-  hero: 4.196rem,
-  sub-hero: 3.357rem,
-  h1: 2.686rem,
-  h2: 2.148rem,
-  h3: 1.719rem,
-  h4: 1.375rem,
-  p: 1.1rem,
-  small: 0.94rem // deviates from modular scale
+  hero: 4rem, // deviates from modular scale
+  sub-hero: 2.862rem,
+  h1: 2.385rem,
+  h2: 1.987rem,
+  h3: 1.656rem,
+  h4: 1.38rem,
+  p: 1.15rem,
+  small: 1.05rem // deviates from modular scale
 );
 
 
-$breakpoint-tablet: 75em;
-$breakpoint-mobile: 45em;
+$breakpoint-tablet: 85em;
+$breakpoint-mobile: 40em;
 
-@mixin size($level) {
+@mixin size($level:p) {
   font-size: map-get($type-scale, $level);
   @media (max-width: $breakpoint-tablet) {
      font-size: map-get($type-scale-tablet, $level);
@@ -80,24 +168,26 @@ $breakpoint-mobile: 45em;
 }
 
 $whitespace: $line-height * map-get($type-scale, p);
+$breakpoint-tablet-multiplier: 0.8;
+$brekapoint-mobile-multiplier: 0.65;
 
-@mixin margin-bottom($level) {
-  margin-bottom: $line-height * map-get($type-scale, p) * $level;
+@mixin margin-bottom($level:1) {
+  margin-bottom: $whitespace * $level;
   @media (max-width: $breakpoint-tablet) {
-     margin-bottom: $line-height * map-get($type-scale-tablet, p) * $level;
+     margin-bottom: $whitespace * $level * $breakpoint-tablet-multiplier;
   }
   @media (max-width: $breakpoint-mobile) {
-     margin-bottom: $line-height * map-get($type-scale-mobile, p) * $level;
+     margin-bottom: $whitespace * $level * $brekapoint-mobile-multiplier;
   }
 }
 
 @mixin margin-top($level) {
-  margin-top: $line-height * map-get($type-scale, p) * $level;
+  margin-top: $whitespace * $level;
   @media (max-width: $breakpoint-tablet) {
-     margin-top: $line-height * map-get($type-scale-tablet, p) * $level;
+     margin-top: $whitespace * $level * $breakpoint-tablet-multiplier;
   }
   @media (max-width: $breakpoint-mobile) {
-     margin-top: $line-height * map-get($type-scale-mobile, p) * $level;
+     margin-top: $whitespace * $level * $brekapoint-mobile-multiplier;
   }
 }
 
@@ -109,51 +199,72 @@ p {@include size(p);}
 li {@include size(p);}
 small {@include size(small);}
 
-h1 {font-family: $heading-font}
 
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-small {
-  @include margin-bottom(1);
-}
 
 ol,
 ul {
   padding-left: 1.4rem;
 }
 
-blockquote {
-  @include margin-bottom(1);
-  @include size(p);
-  padding: 1rem 0 1rem 1.6rem;
-  border-left: 0.5rem solid color($theme-color);
-  margin-top: $whitespace;
-}
-
-cite {
-  &:before {
-    content: '\2014 ';
-  }
-  color: color($grey, 400);
-  display: block;
-}
-
-
-@mixin container($width: 48rem) {
+@mixin container($width: 55rem) {
   margin: auto;
   @include margin-top(1);
-  @include margin-bottom(1);
+  @include margin-bottom(3);
   max-width: $width;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
+/* 
+ * Sassy Link Underline: http://codepen.io/jimmynotjim/pen/EabQjV 
+ * To use, apply @include link-underline
+ * or apply @include link-underline-hover if you only want the affect when hovering 
+ * Param1 $background is the color of the background behind the text
+ * Param2 $color is the color you want the underline to be
+ * Param3 is the percent that you can adjust to change height of the underline (range from 85% to 100%)
+ * Param4 is the width of the underline
+ */
+
+@mixin text-underline-crop($background) {
+  text-shadow:  .06em 0 $background, 
+                -.06em 0 $background,
+                0 .06em $background,
+                0 -.06em $background,
+                .09em 0 $background,
+                -.09em 0 $background,
+                .12em 0 $background,
+                -.12em 0 $background,
+                .15em 0 $background,
+                -.15em 0 $background,
+                .18em 0 $background,
+                -.18em 0 $background;
+}
+
+@mixin text-underline($color, $percent: 93%, $width: 1px) {
+  background-image: linear-gradient($color, $color);
+  background-size: 1px $width;
+  background-repeat: repeat-x;
+  background-position: 0% $percent;
+}
+
+
+@mixin link-underline($background, $color, $percent: 93%, $width: 1px) {
+  @include text-underline-crop($background);
+  @include text-underline($color, $percent, $width);
+
+  text-decoration: none;
+
+  *,
+  *:after,
+  &:after,
+  *:before,
+  &:before {
+    text-shadow: none;
+  }
+}
+
+
 a {
-  color: color($theme-color);
-  /* Additional Styling in modules/_smart-underline.scss */
+  text-decoration: none;
+  color: inherit;
 }

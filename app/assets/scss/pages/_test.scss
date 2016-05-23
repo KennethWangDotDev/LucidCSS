@@ -1,9 +1,0 @@
-.test__container {
-  @include container;
-  
-  .button {
-    @include button-lite(color($theme-color), 0.8em);
-    @include size(h3);
-    color: white;
-  }
-}

@@ -43,3 +43,4 @@ bower_components
 .bower-tmp
 
 dist
+app/assets/fonts

@@ -1,0 +1,84 @@
+.home__header {
+  @include margin-bottom(4);
+  padding: $whitespace;
+  background-color: color($theme-color, 700);
+  border-bottom: 8px solid color($theme-color, 900);
+  text-align: center;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0.5rem;
+    padding-bottom: 2rem;
+  }
+  
+      .title {
+        @include serious-font;
+        @include size(hero);
+        color: white;
+
+      }
+          .light {
+            @include body-font;
+            color: color($theme-color, 100);
+          }
+
+      .desc {
+        @include size(h1);
+        color: color($theme-color, 100);
+        font-weight: 100;
+      }
+}
+
+.home__book {
+  @include container;
+  overflow-x: hidden;
+  
+  a {
+    color: color($theme-color);
+    @include link-underline(white, color($theme-color), 93%);
+  }
+
+  h1,
+  p,
+  ul,
+  ol,
+  small {
+    @include margin-bottom(1);
+  }
+
+  h2,
+  h3 {
+    @include serious-font;
+    @include margin-top(3);
+    @include margin-bottom(0.5);
+    font-weight: 800;
+  }
+
+  h4 {
+    @include serious-font;
+    @include margin-bottom(0.5);
+  }
+
+  blockquote {
+    @include margin-top(1);
+    @include margin-bottom(1);
+    @include size(p);
+    @include serious-font;
+    padding: 1rem 0 1rem 1.6rem;
+    border-left: 0.5rem solid color($theme-color);
+      p {
+        margin-bottom: 0;
+      }
+  }
+
+  code {
+    @include size(small);
+  }
+
+  cite {
+  &:before {
+    content: '\2014 ';
+  }
+    color: color($grey, 500);
+    display: block;
+  }
+
+}
